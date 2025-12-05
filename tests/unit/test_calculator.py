@@ -15,10 +15,10 @@ Number = Union[int, float]
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (2, 3, 5),           # Test adding two positive integers
-        (-2, -3, -5),        # Test adding two negative integers
-        (2.5, 3.5, 6.0),     # Test adding two positive floats
-        (-2.5, 3.5, 1.0),    # Test adding a negative float and a positive float
+        (7, 8, 15),           # Test adding two positive integers
+        (-7, -8, -15),        # Test adding two negative integers
+        (4.5, 5.5, 10.0),     # Test adding two positive floats
+        (-4.5, 5.5, 1.0),    # Test adding a negative float and a positive float
         (0, 0, 0),            # Test adding zeros
     ],
     ids=[
@@ -47,12 +47,12 @@ def test_add(a: Number, b: Number, expected: Number) -> None:
     2. Assert that the result is equal to 'expected'.
 
     Example:
-    >>> test_add(2, 3, 5)
-    >>> test_add(-2, -3, -5)
+    >>> test_add(7, 8, 15)
+    >>> test_add(-7, -8, -15)
     """
     # Call the 'add' function with the provided arguments
     result = add(a, b)
-    
+
     # Assert that the result of add(a, b) matches the expected value
     assert result == expected, f"Expected add({a}, {b}) to be {expected}, but got {result}"
 
@@ -64,10 +64,10 @@ def test_add(a: Number, b: Number, expected: Number) -> None:
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (5, 3, 2),           # Test subtracting a smaller positive integer from a larger one
-        (-5, -3, -2),        # Test subtracting a negative integer from another negative integer
-        (5.5, 2.5, 3.0),     # Test subtracting two positive floats
-        (-5.5, -2.5, -3.0),  # Test subtracting two negative floats
+        (10, 4, 6),           # Test subtracting a smaller positive integer from a larger one
+        (-10, -4, -6),        # Test subtracting a negative integer from another negative integer
+        (8.5, 3.0, 5.5),     # Test subtracting two positive floats
+        (-8.5, -3.0, -5.5),  # Test subtracting two negative floats
         (0, 0, 0),            # Test subtracting zeros
     ],
     ids=[
@@ -96,12 +96,12 @@ def test_subtract(a: Number, b: Number, expected: Number) -> None:
     2. Assert that the result is equal to 'expected'.
 
     Example:
-    >>> test_subtract(5, 3, 2)
-    >>> test_subtract(-5, -3, -2)
+    >>> test_subtract(10, 4, 6)
+    >>> test_subtract(-10, -3, -6)
     """
     # Call the 'subtract' function with the provided arguments
     result = subtract(a, b)
-    
+
     # Assert that the result of subtract(a, b) matches the expected value
     assert result == expected, f"Expected subtract({a}, {b}) to be {expected}, but got {result}"
 
@@ -113,11 +113,11 @@ def test_subtract(a: Number, b: Number, expected: Number) -> None:
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (2, 3, 6),           # Test multiplying two positive integers
-        (-2, 3, -6),         # Test multiplying a negative integer with a positive integer
-        (2.5, 4.0, 10.0),    # Test multiplying two positive floats
-        (-2.5, 4.0, -10.0),  # Test multiplying a negative float with a positive float
-        (0, 5, 0),            # Test multiplying zero with a positive integer
+        (4, 5, 20),           # Test multiplying two positive integers
+        (-4, 5, -20),         # Test multiplying a negative integer with a positive integer
+        (3.5, 2.0, 7.0),    # Test multiplying two positive floats
+        (-3.5, 2.0,  -7.0),  # Test multiplying a negative float with a positive float
+        (0, 8, 0),            # Test multiplying zero with a positive integer
     ],
     ids=[
         "multiply_two_positive_integers",
@@ -145,12 +145,12 @@ def test_multiply(a: Number, b: Number, expected: Number) -> None:
     2. Assert that the result is equal to 'expected'.
 
     Example:
-    >>> test_multiply(2, 3, 6)
-    >>> test_multiply(-2, 3, -6)
+    >>> test_multiply(4, 5, 20)
+    >>> test_multiply(-4, 5, -20)
     """
     # Call the 'multiply' function with the provided arguments
     result = multiply(a, b)
-    
+
     # Assert that the result of multiply(a, b) matches the expected value
     assert result == expected, f"Expected multiply({a}, {b}) to be {expected}, but got {result}"
 
@@ -162,11 +162,11 @@ def test_multiply(a: Number, b: Number, expected: Number) -> None:
 @pytest.mark.parametrize(
     "a, b, expected",
     [
-        (6, 3, 2.0),           # Test dividing two positive integers
-        (-6, 3, -2.0),         # Test dividing a negative integer by a positive integer
-        (6.0, 3.0, 2.0),       # Test dividing two positive floats
-        (-6.0, 3.0, -2.0),     # Test dividing a negative float by a positive float
-        (0, 5, 0.0),            # Test dividing zero by a positive integer
+        (20, 4, 5.0),           # Test dividing two positive integers
+        (-20, 4, -5.0),         # Test dividing a negative integer by a positive integer
+        (20.0, 4.0, 5.0),       # Test dividing two positive floats
+        (-20.0, 4.0, -5.0),     # Test dividing a negative float by a positive float
+        (0, 7, 0.0),            # Test dividing zero by a positive integer
     ],
     ids=[
         "divide_two_positive_integers",
@@ -194,12 +194,12 @@ def test_divide(a: Number, b: Number, expected: float) -> None:
     2. Assert that the result is equal to 'expected'.
 
     Example:
-    >>> test_divide(6, 3, 2.0)
-    >>> test_divide(-6, 3, -2.0)
+    >>> test_divide(20, 4, 5.0)
+    >>> test_divide(-20, 4, -5.0)
     """
     # Call the 'divide' function with the provided arguments
     result = divide(a, b)
-    
+
     # Assert that the result of divide(a, b) matches the expected value
     assert result == expected, f"Expected divide({a}, {b}) to be {expected}, but got {result}"
 
@@ -227,8 +227,9 @@ def test_divide_by_zero() -> None:
     # Use pytest's context manager to check for a ValueError when dividing by zero
     with pytest.raises(ValueError) as excinfo:
         # Attempt to divide 6 by 0, which should raise a ValueError
-        divide(6, 0)
-    
+        divide(20, 0)
+
     # Assert that the exception message contains the expected error message
     assert "Cannot divide by zero!" in str(excinfo.value), \
         f"Expected error message 'Cannot divide by zero!', but got '{excinfo.value}'"
+                                                                                                                                                                                                                                       
